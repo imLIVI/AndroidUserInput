@@ -19,8 +19,11 @@ public class MainActivity extends AppCompatActivity {
 
     int numberOfCoffees=0;
     public void submitOrder(View view) {
-        display(numberOfCoffees);
-        displayPrice(numberOfCoffees*5);
+        int total=numberOfCoffees*5;
+        String message = "Total: " + "$" + total + "\nThank you!";
+        displayMessage(message);
+         /*displayPrice(numberOfCoffees*5);
+       displayMessage("Thank you!");*/
     }
 
     private void display(int number) {
@@ -35,16 +38,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View v){
-        int newNum=numberOfCoffees++;
+        int newNum=++numberOfCoffees;
         display(newNum);
         displayPrice(newNum*5);
-
     }
 
     public void decrement(View v){
-        int newNum=numberOfCoffees--;
+        int newNum=--numberOfCoffees;
         display(newNum);
         displayPrice(newNum*5);
-
+    }
+    public void displayMessage(String message)
+    {
+        TextView priceTextView=(TextView)findViewById(R.id.price_text);
+        priceTextView.setText(message);
     }
 }
